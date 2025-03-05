@@ -15,6 +15,20 @@ addtaskBtn.addEventListener("click",()=>{
             li.remove();
         });
 
+        const doneBtn = document.createElement("input");
+        doneBtn.type="checkbox";
+        doneBtn.addEventListener("change",()=>{
+            if(doneBtn.checked){
+                li.style.textDecoration = "line-through";
+                taskList.appendChild(li);
+                doneBtn.style.display = "none"
+            }else{
+                li.style.textDecoration = "none";  
+            }
+            
+        });
+        
+        li.appendChild(doneBtn);
         li.appendChild(removeBtn);
         taskList.appendChild(li);
 
