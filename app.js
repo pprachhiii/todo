@@ -19,8 +19,11 @@ addtaskBtn.addEventListener("click",()=>{
         editBtn.innerText = "Edit";
         editBtn.addEventListener("click",()=>{
             const editInput = document.createElement("input");
+            const editDate = document.createElement("input");
             editInput.type = "text";
+            editDate.type = "date";
             editInput.value = taskText.innerText;
+            editDate.value =`(Due: ${dueDate.innerText})`;
 
             const saveBtn = document.createElement("button");
             saveBtn.innerText = "Save";
@@ -28,11 +31,14 @@ addtaskBtn.addEventListener("click",()=>{
             saveBtn.addEventListener("click",()=>{
                 if(editInput.value.trim()!=""){
                     taskText.innerText = editInput.value;
+                    dueDate.innerText = editDate.value;
                     li.replaceChild(taskText,editInput);
+                    li.replaceChild(dueDate,editDate);
                     li.replaceChild(editBtn,saveBtn);
                 }
             });
             li.replaceChild(editInput, taskText);
+            li.replaceChild(editDate, dueDate);
             li.replaceChild(saveBtn, editBtn);
             editInput.addEventListener("keypress",(event)=>{
               if(event.key === "Enter"){
@@ -59,6 +65,9 @@ addtaskBtn.addEventListener("click",()=>{
                 editBtn.style.display = "none";
             }else{
                 li.style.textDecoration = "none";  
+                doneBtn.style.display = "inline-block";
+                dueDate.style.display = "inline-block";
+                editBtn.style.display = "inline-block";
             }
             
         });
