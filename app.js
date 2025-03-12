@@ -4,14 +4,42 @@ const addtaskBtn = document.querySelector(".addTaskBtn");
 const deletetaskBtn = document.querySelector(".deleteTaskBtn");
 const taskList = document.querySelector(".task ul");
 
+
+
 addtaskBtn.addEventListener("click",()=>{
     if(taskInput.value.trim() !=="" && dueDateInput.value !== ""){
         const li = document.createElement("li");
-        li.innerText = taskInput.value;
+        const taskText = document.createElement("span");
+        taskText.innerText = taskInput.value;
 
         const dueDate = document.createElement("span");
         dueDate.innerText = `(Due: ${dueDateInput.value})`;
 
+        const editBtn = document.createElement("button");
+        editBtn.innerText = "Edit";
+        editBtn.addEventListener("click",()=>{
+            const editInput = document.createElement("input");
+            editInput.type = "text";
+            editInput.value = taskText.innerText;
+
+            const saveBtn = document.createElement("button");
+            saveBtn.innerText = "Save";
+            
+            saveBtn.addEventListener("click",()=>{
+                if(editInput.value.trim()!=""){
+                    taskText.innerText = editInput.value;
+                    li.replaceChild(taskText,editInput);
+                    li.replaceChild(editBtn,saveBtn);
+                }
+            });
+            li.replaceChild(editInput, taskText);
+            li.replaceChild(saveBtn, editBtn);
+            editInput.addEventListener("keypress",(event)=>{
+              if(event.key === "Enter"){
+                saveBtn.click();
+              }
+            });
+        });
 
         const removeBtn = document.createElement("button");
         removeBtn.innerText = "X";
@@ -28,15 +56,18 @@ addtaskBtn.addEventListener("click",()=>{
                 taskList.appendChild(li);
                 doneBtn.style.display = "none";
                 dueDate.style.display = "none";
+                editBtn.style.display = "none";
             }else{
                 li.style.textDecoration = "none";  
             }
             
         });
 
+        li.appendChild(taskText);
         li.appendChild(dueDate);
         li.appendChild(doneBtn);
         li.appendChild(removeBtn);
+        li.appendChild(editBtn);
         taskList.appendChild(li);
 
         taskInput.value = "";
@@ -44,6 +75,6 @@ addtaskBtn.addEventListener("click",()=>{
     }
 
 });
-    deletetaskBtn.addEventListener("click", () => {
-        taskList.innerHTML = ""; // Remove all tasks
-    });
+deletetaskBtn.addEventListener("click", () => {
+    taskList.innerHTML = ""; 
+});
