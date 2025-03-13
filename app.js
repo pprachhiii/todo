@@ -23,7 +23,7 @@ addtaskBtn.addEventListener("click",()=>{
             editInput.type = "text";
             editDate.type = "date";
             editInput.value = taskText.innerText;
-            editDate.value =`(Due: ${dueDate.innerText})`;
+            editDate.value =dueDate.innerText.replace(/\(Due: |\)/g, "");
 
             const saveBtn = document.createElement("button");
             saveBtn.innerText = "Save";
@@ -31,7 +31,7 @@ addtaskBtn.addEventListener("click",()=>{
             saveBtn.addEventListener("click",()=>{
                 if(editInput.value.trim()!=""){
                     taskText.innerText = editInput.value;
-                    dueDate.innerText = editDate.value;
+                    dueDate.innerText = `(Due: ${editDate.value})`;
                     li.replaceChild(taskText,editInput);
                     li.replaceChild(dueDate,editDate);
                     li.replaceChild(editBtn,saveBtn);
@@ -45,6 +45,7 @@ addtaskBtn.addEventListener("click",()=>{
                 saveBtn.click();
               }
             });
+            setTaskReminder(editInput.value, editDate.value);
         });
 
         const removeBtn = document.createElement("button");
@@ -79,11 +80,50 @@ addtaskBtn.addEventListener("click",()=>{
         li.appendChild(editBtn);
         taskList.appendChild(li);
 
+        setTaskReminder(taskInput.value, dueDateInput.value);
+
         taskInput.value = "";
+        dueDateInput.value = "";
 
     }
 
 });
+
 deletetaskBtn.addEventListener("click", () => {
     taskList.innerHTML = ""; 
+});
+
+function setTaskReminder(taskValue , dueDateValue){
+    let dueTime = new Date(dueDateValue + "T23:59:59").getTime(); 
+    const currentTime = new Date().getTime();
+    const timeUntilDue = dueTime - currentTime;
+
+    if (timeUntilDue > 0) {
+        setTimeout(() => {
+            showNotification(taskValue);
+        }, timeUntilDue);
+    }
+
+}
+function showNotification(taskValue){
+    if (Notification.permission === "granted") {
+      new Notification("Task Reminder" , {
+       body: `Reminder: ${taskValue} is due now! ⏰`,
+       icon: "https://cdn-icons-png.flaticon.com/512/1827/1827272.png"
+       });
+    }else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission =>{
+            if (permission === "granted") {
+                showNotification(taskValue);
+            }
+        });
+    }else{
+        alert(`Reminder: ${taskValue} is due now! ⏰`);
+
+    }    
+}
+document.addEventListener("DOMContentLoaded", () => {
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+    }
 });

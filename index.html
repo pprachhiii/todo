@@ -9,9 +9,14 @@
 <body>
     <input type="text" class="taskInput">
     <input type="date" class="dueDate">
+    <select id="category">
+        <option value="1" selected>Work</option>
+        <option value="2">Study</option>
+        <option value="3">Skincare</option>
+    </select>
     <button class="addTaskBtn">+</button>
     <div class="task">
-        <ul></ul>
+        <ul class="taskCategories"></ul>
     </div>
     <button class="deleteTaskBtn">X</button>
     <script src="app.js"></script>
