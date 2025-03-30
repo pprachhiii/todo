@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Task</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/edit.css">
 </head>
 <body>
     <h1>Edit Task</h1>
     <form method="post" action="/tasks/<%= task.id %>?_method=PATCH">
         <input type="hidden" name="_method" value="PATCH">
 
-        <label>Task:</label>
-        <input type="text" class="taskInput" name="taskInput" value="<%= task.taskInput %>">
+        <label for="taskInput">Task:</label>
+        <input type="text" id="taskInput" class="taskInput" name="taskInput" value="<%= task.taskInput %>">
 
-        <label>Due Date:</label>
-        <input type="date" class="dueDate" name="dueDate" value="<%= task.dueDate %>">
+        <label for="dueDate">Due Date:</label>
+        <input type="date" id="dueDate" class="dueDate" name="dueDate" value="<%= task.dueDate %>">
 
-        <label>Category:</label>
+        <label for="category">Category:</label>
         <select id="category" name="category">
             <option value="1" <%= task.category == '1' ? 'selected' : '' %>>Work</option>
             <option value="2" <%= task.category == '2' ? 'selected' : '' %>>Study</option>
@@ -25,6 +25,7 @@
         </select>
 
         <button type="submit">Save Changes</button>
+        <a href="/tasks" class="back-btn">Go Back</a>
     </form>
 
     <script src="app.js"></script>

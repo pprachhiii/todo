@@ -1,0 +1,113 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #D76C82; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
+
+header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Header Hover Effect */
+header h1:hover {
+    transform: scale(1.1);
+}
+
+/* Main Section */
+main {
+    background-color: #f3efde;
+    padding: 40px 20px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 1000px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect on main box */
+main:hover {
+    transform: translateY(-5px);
+}
+
+/* Paragraph Styling */
+main p {
+    font-size: 24px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Button Styling */
+main button {
+    border: none;
+    font-size: 20px;
+    padding: 12px 24px;
+    background-color: #D76C82;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Button Hover Effect */
+main button:hover {
+    background-color: #db8092;
+    transform: scale(1.05);
+}
+
+/* Button Active Effect */
+main button:active {
+    transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 36px;
+    }
+    
+    main {
+        padding: 30px;
+        width: 95%;
+    }
+
+    main p {
+        font-size: 20px;
+    }
+
+    main button {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+}

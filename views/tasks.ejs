@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <link rel="stylesheet" href="/css/tasks.css">
+</head>
+<body>
+    <h1>Tasks</h1>
+    <a href="/tasks/new">+</a>
+    <div class="task">
+        <% if (tasks.length > 0) { %>
+            <ul class="taskCategories">
+                <% tasks.forEach(task => { %>
+                    <li>
+                        <strong><%= task.taskInput %></strong> | Due: <%= task.dueDate %> | Category: <%= task.category %> 
+                        <div class="task-actions">
+                            <a href="/tasks/<%= task.id %>">View Details</a>
+                            <a href="/tasks/<%= task.id %>/edit">Edit</a>
+                            <form action="/tasks/<%= task.id %>?_method=DELETE" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+            <% } else { %>
+            <p>No tasks available. Start by adding a new one!</p>
+        <% } %>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

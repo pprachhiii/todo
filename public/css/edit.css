@@ -1,0 +1,102 @@
+/* General Styles */
+body {
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Page Header */
+h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+/* Form Styling */
+form {
+    background-color: #FFEDFA;
+    width: 60%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+form:hover {
+    transform: scale(1.03);
+}
+
+/* Labels */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    align-self: flex-start;
+    margin-left: 10%;
+}
+
+/* Input and Select Fields */
+input, select {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #EC7FA9;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #fd91ba;
+    box-shadow: 0 0 6px rgba(237, 120, 169, 0.6);
+}
+
+/* Button Styling */
+button {
+    background-color: #EC7FA9;
+    border: none;
+    width: 80%;
+    max-width: 350px;
+    height: 45px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #fd91ba;
+    transform: scale(1.05);
+}
+
+/* Click Effect */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Back Button Styling */
+.back-btn {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #EC7FA9;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+    color: #fd91ba;
+    text-decoration: underline;
+}

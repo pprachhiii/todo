@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-do List</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Add Task | To-do List</title>
+    <link rel="stylesheet" href="/css/new.css">
 </head>
 <body>
     <form method="post" action="/tasks">
-    <input type="text" class="taskInput" name="taskInput">
-    <input type="date" class="dueDate" name="dueDate">
-    <select id="category" name="category">
-        <option value="1" selected>Work</option>
-        <option value="2">Study</option>
-        <option value="3">Skincare</option>
-    </select>
-    <button class="addTaskBtn">+</button>
-    <button class="deleteTaskBtn">X</button>
+        <h2>Enter a Task</h2>
+        <input type="text" class="taskInput" name="taskInput" placeholder="Enter task..." required>
+        <input type="date" class="dueDate" name="dueDate" required>
+        <select id="category" name="category">
+            <option value="1" selected>Work</option>
+            <option value="2">Study</option>
+            <option value="3">Skincare</option>
+        </select>
+        <button class="addTaskBtn">Submit</button>
     </form>
 
     <script src="app.js"></script>

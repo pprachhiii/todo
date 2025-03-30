@@ -3,28 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-do List</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Ta-Da - Task Manager</title>
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
-    <h1>Tasks</h1>
-    <form method="post" action="/tasks">
-    <div class="task">
-        <ul class="taskCategories">
-            <%for(task of tasks){%>
-                <li><%= task.taskInput %><%= task.dueDate %><%= task.category%> </li>
-                <a href="http://localhost:5000/tasks/<%=task.id%>">Show task in detail</a>
-                <a href="http://localhost:5000/tasks/<%=task.id%>/edit">Edit task</a>
-                <form action="/tasks/<%= task.id %>?_method=DELETE" method="POST">
-                    <button type="submit">Delete</button>
-                  </form>                  
-            <%}%>
-        </ul>
-    </div>
-    <a href="http://localhost:5000/tasks/new">Add new task</a>
-    <button class="deleteTaskBtn">X</button>
+    <form method="get" action="/tasks">
+        <header>
+            <h1 class="appName">✨ Ta-Da ✨</h1>
+        </header>
+        <main>
+            <p>May all your to-dos turn into ta-das! 🎉</p>
+            <button type="submit">Get Started</button>
+        </main>
     </form>
-
-    <script src="app.js"></script>
 </body>
 </html>
